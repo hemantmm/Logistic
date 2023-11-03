@@ -117,12 +117,18 @@
 
 // // export default page
 
+"use client"
 import React from 'react'
 import AdminSidebar from '../AdminSidebar'
 import {BsSearch} from 'react-icons/bs'
 import { FaRegBell,FaUserCircle } from 'react-icons/fa'
 import Image from 'next/image'
 import image from '../favicon.ico'
+import {HiTrendingUp,HiTrendingDown} from 'react-icons/hi'
+import { BarChart} from '../Charts'
+import { BiMaleFemale } from 'react-icons/bi'
+import Table from '../DashboardTable'
+import data from '../data.json'
 // import { lazy } from 'react'
 
 const styles = {
@@ -147,10 +153,76 @@ function page() {
           <FaRegBell size={20} className="text-lg opacity-70 cursor-pointer" />
           <Image src={image} alt='user' className='w-8 h-8 ml-4 cursor-pointer' />
         </div>
+
+        <section className='flex justify-between items-stretch p-2 space-x-8'>
+          <WidgetItem percent={40} amount={true} value={320000} heading='Revenue' color='rgb(0,115,255)' />
+
+          <WidgetItem percent={-14} value={400} heading='Users' color='rgb(0 198 202)' />
+
+          <WidgetItem percent={80} value={23000} heading='Transactions' color='rgb(255 196 0)' />
+
+          <WidgetItem percent={30} value={1000} heading='Products' color='rgb(76 0 255)' />
+        </section>
+
+        <section className='flex pt-0 pr-8 pb-8 pl-0'>
+          <div className='bg-white rounded-xl w-full py-4 px-12'>
+            <h2 className='text-uppercase text-2xl font-bold tracking-3 mt-4 mb-8 ml-1/4 text-center'>Revenue & Transaction</h2>
+            <BarChart data_2={[300,144,433,655,237,755,190]} data_1={[200,444,343,556,778,455,990]} title_1='Revenue' title_2='Transaction' bgColor_1='rgb(0 115 255)' bgColor_2='rgba(53,162,235,0.8)' />
+            {/* Grpah here */}
+          </div>
+        </section>
+
+        <section className='flex gap-8 p-0 pr-8 pb-8 h-auto'>
+          {/* <div className='w-full max-w-10 p-4 relative' style={{
+            backgroundColor:'white', boxShadow:'0px 10px 10px rgba(0, 0, 0, 0.132)', borderRadius:'10px'
+          }}>
+            <h2 className='mx-0 my-6 text-center text-2xl font-thin tracking-1.5 uppercase'>Gender Ratio</h2>
+            <DoughnutChart labels={["Female","Male"]} data={[12,19]} backgroundColor={["hsl(340,82%,56%)","rgb(53,162,235,0.8)"]} cutout={200} />
+            <p className='absolute top-44 ml-32 transform -translate-x-1/2 -translate-y-1/2 text-2xl text-gray-600'><BiMaleFemale /></p>
+          </div> */}
+          {/* </div> */}
+          {/* Table */}
+          <div className='w-full max-w-80 p-4 relative bg-white rounded-xl'>
+            <Table data={data.transaction} />
+          </div>
+        </section>
       </main>
     </div>
   </>
   )
 }
+
+interface WidgetItemProps{
+heading:string;
+value:number;
+percent:number;
+color:string;
+amount?:boolean;
+}
+
+const WidgetItem=({heading,value,percent,color,amount=false}:WidgetItemProps)=><article className='w-64 bg-white shadow-md p-8 rounded-2xl flex justify-between items-stretch'>
+  <div className=''>
+    <p className='opacity-70 text-xs'>{heading}</p>
+    <h4 className='text-lg'>{amount?`$${value}`:value}</h4>
+    {
+      percent>0?(
+      <span className='text-green-600 flex items-center m-1'><HiTrendingUp/> +{percent}%</span>
+      ):(
+        <span className='text-red-600 flex items-center'><HiTrendingDown/> {percent}%{" "}</span>
+        )
+    }
+  </div>
+
+  <div className='relative w-20 h-20 rounded-full grid place-items-center bg-cyan-400' style={{
+    background:`conic-gradient(
+      ${color} ${Math.abs(percent)/100*360}deg,
+      rgb(255,255,255) 0
+    )`
+  }}>
+  <div className="absolute w-16 h-16 bg-white rounded-full"></div>
+    <span className='relative' style={{color}}>{percent}%</span>
+  </div>
+
+</article>
 
 export default page

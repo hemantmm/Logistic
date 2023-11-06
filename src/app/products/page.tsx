@@ -36,90 +36,92 @@ const columns:Column<DataType>[]=[
 ]
 
 const arr:DataType[]=[
-  {
-    photo:<Image src={logo} alt='user' width={20} height={20} />,
-    name:"puma",
-    price:690,
-    stock:3,
-    action:<Link href="/products/sajknaskd">Manage</Link>
-  },
-  {
-    photo:<Image src={logo} alt='us1r' width={20} height={20} />,
-    name:"macbook",
-    price:99990,
-    stock:23,
-    action:<Link href="/products/sdaskdnkasjdn">Manage</Link>
-  },
-  {
-    photo:<Image src={logo} alt='user' width={20} height={20} />,
-    name:"puma",
-    price:690,
-    stock:3,
-    action:<Link href="/products/sajknaskd">Manage</Link>
-  },
-  {
-    photo:<Image src={logo} alt='us1r' width={20} height={20} />,
-    name:"macbook",
-    price:99990,
-    stock:23,
-    action:<Link href="/products/sdaskdnkasjdn">Manage</Link>
-  },
-  {
-    photo:<Image src={logo} alt='user' width={20} height={20} />,
-    name:"puma",
-    price:690,
-    stock:3,
-    action:<Link href="/products/sajknaskd">Manage</Link>
-  },
-  {
-    photo:<Image src={logo} alt='us1r' width={20} height={20} />,
-    name:"macbook",
-    price:99990,
-    stock:23,
-    action:<Link href="/products/sdaskdnkasjdn">Manage</Link>
-  },
-  {
-    photo:<Image src={logo} alt='user' width={20} height={20} />,
-    name:"puma",
-    price:690,
-    stock:3,
-    action:<Link href="/products/sajknaskd">Manage</Link>
-  },
-  {
-    photo:<Image src={logo} alt='us1r' width={20} height={20} />,
-    name:"macbook",
-    price:99990,
-    stock:23,
-    action:<Link href="/products/sdaskdnkasjdn">Manage</Link>
-  },
-  {
-    photo:<Image src={logo} alt='user' width={20} height={20} />,
-    name:"puma",
-    price:690,
-    stock:3,
-    action:<Link href="/products/sajknaskd">Manage</Link>
-  },
-  {
-    photo:<Image src={logo} alt='us1r' width={20} height={20} />,
-    name:"macbook",
-    price:99990,
-    stock:23,
-    action:<Link href="/products/sdaskdnkasjdn">Manage</Link>
-  },
-  {
-    photo:<Image src={logo} alt='user' width={20} height={20} />,
-    name:"puma",
-    price:690,
-    stock:3,
-    action:<Link href="/products/sajknaskd">Manage</Link>
-  },
+  // {
+  //   photo:<Image src={logo} alt='user' width={20} height={20} />,
+  //   name:"puma",
+  //   price:690,
+  //   stock:3,
+  //   action:<Link href="/products/sajknaskd">Manage</Link>
+  // },
+  // {
+  //   photo:<Image src={logo} alt='us1r' width={20} height={20} />,
+  //   name:"macbook",
+  //   price:99990,
+  //   stock:23,
+  //   action:<Link href="/products/sdaskdnkasjdn">Manage</Link>
+  // },
+  // {
+  //   photo:<Image src={logo} alt='user' width={20} height={20} />,
+  //   name:"puma",
+  //   price:690,
+  //   stock:3,
+  //   action:<Link href="/products/sajknaskd">Manage</Link>
+  // },
+  // {
+  //   photo:<Image src={logo} alt='us1r' width={20} height={20} />,
+  //   name:"macbook",
+  //   price:99990,
+  //   stock:23,
+  //   action:<Link href="/products/sdaskdnkasjdn">Manage</Link>
+  // },
+  // {
+  //   photo:<Image src={logo} alt='user' width={20} height={20} />,
+  //   name:"puma",
+  //   price:690,
+  //   stock:3,
+  //   action:<Link href="/products/sajknaskd">Manage</Link>
+  // },
+  // {
+  //   photo:<Image src={logo} alt='us1r' width={20} height={20} />,
+  //   name:"macbook",
+  //   price:99990,
+  //   stock:23,
+  //   action:<Link href="/products/sdaskdnkasjdn">Manage</Link>
+  // },
+  // {
+  //   photo:<Image src={logo} alt='user' width={20} height={20} />,
+  //   name:"puma",
+  //   price:690,
+  //   stock:3,
+  //   action:<Link href="/products/sajknaskd">Manage</Link>
+  // },
+  // {
+  //   photo:<Image src={logo} alt='us1r' width={20} height={20} />,
+  //   name:"macbook",
+  //   price:99990,
+  //   stock:23,
+  //   action:<Link href="/products/sdaskdnkasjdn">Manage</Link>
+  // },
+  // {
+  //   photo:<Image src={logo} alt='user' width={20} height={20} />,
+  //   name:"puma",
+  //   price:690,
+  //   stock:3,
+  //   action:<Link href="/products/sajknaskd">Manage</Link>
+  // },
+  // {
+  //   photo:<Image src={logo} alt='us1r' width={20} height={20} />,
+  //   name:"macbook",
+  //   price:99990,
+  //   stock:23,
+  //   action:<Link href="/products/sdaskdnkasjdn">Manage</Link>
+  // },
+
   {
     photo:<Image src={logo} alt='us1r' width={20} height={20} />,
     name:"macbook",
     price:99990,
     stock:23,
-    action:<Link href="/products/sdaskdnkasjdn">Manage</Link>
+    action:<Link href="/products/[productId]" as="/products/1">Manage</Link>
   },
+  {
+    photo:<Image src={logo} alt='user' width={20} height={20} />,
+    name:"puma",
+    price:690,
+    stock:3,
+    action:<Link href="/products/[productId]" as="/products/2">Manage</Link>
+  },
+
 ]
 
 function page() {
@@ -129,7 +131,7 @@ function page() {
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const Table=useCallback(
-    TableHOC<DataType>(columns,data,"dashboard-product-box","Products",true),[]
+    TableHOC<DataType>(columns,arr,"dashboard-product-box","Products",true),[]
   )
 
   return (

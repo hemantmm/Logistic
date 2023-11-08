@@ -51,7 +51,7 @@ const arr:DataType[]=[
   amount:2500,
   discount:200,
   quantity:3,
-  status:<span className='text-red-600'>Processing</span>,
+  status:<span className='text-green-600'>Shipped</span>,
   action:<Link href="/transaction/sajknaskd" >Manage</Link>,
   },
   {
@@ -59,7 +59,7 @@ const arr:DataType[]=[
   amount:2500,
   discount:200,
   quantity:3,
-  status:<span className='text-red-600'>Processing</span>,
+  status:<span className='text-purple-600'>Delivered</span>,
   action:<Link href="/transaction/sajknaskd" >Manage</Link>,
   },
 ]

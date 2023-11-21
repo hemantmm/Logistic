@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import {RiTwitterXFill} from 'react-icons/ri'
 import {BiLogoLinkedin,BiLogoPinterestAlt,BiLogoFacebook} from 'react-icons/bi'
+import Home from '@/Home'
 
 
 function Navbar() {
@@ -14,20 +15,22 @@ function Navbar() {
 
   return (
     <>
-    <header className="bg-orange-400 py-4">
+    <header className="bg-orange-400 py-5">
       <div className="container mx-auto flex justify-between items-center">
-    <h1 className="text-white font-bold text-1xl ml-64">
-      <a href='/'>
-      Contact &nbsp;
-      <button className='border-2 p-1 hover:text-blue-500 hover:bg-white rounded-xl'>2929292929</button>
-      </a>
-      </h1>
+    
     <div className="flex items-center text-white">
       <BiLogoFacebook size={25} class="h-8 mx-4 cursor-pointer p-0.5 hover:bg-white hover:text-blue-600 rounded-lg" />
       <RiTwitterXFill size={25} class="h-8 mx-4 cursor-pointer p-0.5 hover:bg-white hover:text-black rounded-lg" />
       <BiLogoPinterestAlt size={25} class="h-8 mx-4 cursor-pointer p-0.5 hover:bg-white hover:text-black rounded-lg" />
       <BiLogoLinkedin size={25} class="h-8 mx-4 cursor-pointer p-0.5 hover:bg-white hover:text-blue-500 rounded-lg" />
     </div>
+
+    <h1 className="text-white font-bold text-1xl mr-16">
+      <a href='/'>
+      Contact &nbsp;
+      <button className='border-2 p-1 hover:text-blue-500 hover:bg-white rounded-xl'>2929292929</button>
+      </a>
+      </h1>
   </div>
       </header>
 
@@ -76,6 +79,8 @@ function Navbar() {
             </div>
         </div>
     </nav>
+
+<Home />
     </>
   )
 }
